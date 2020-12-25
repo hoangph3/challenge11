@@ -1,18 +1,7 @@
 <?php include('object.php');
-
 if (!empty($_POST)) {
-    // $s_username = addslashes(isset($_POST['username']) ? $_POST['username'] : '');
-    // $s_email = addslashes(isset($_POST['email']) ? $_POST['email'] : '');
-    // $s_year = addslashes(isset($_POST['year']) ? $_POST['year'] : '');
-    // $s_sex = addslashes(isset($_POST['sex']) ? $_POST['sex'] : '');
-    
     //Serialize    
-    $user = new User;
-    // $user->setUsername($s_username);
-    // $user->setEmail($s_email);
-    // $user->setYear($s_year);
-    // $user->setSex($s_sex);
-    
+    $user = new User; // run __constructor()
     $serialize_user = serialize($user);
     $base64_user = base64_encode($serialize_user);
     file_put_contents('store', $base64_user);
@@ -80,7 +69,6 @@ if (!empty($_POST)) {
             echo 'Email: ' . $_POST['email'] . '<br/>';
             echo 'Year: ' . $_POST['year'] . '<br/>';
             echo 'Sex: ' . $_POST['sex'] . '<br/>';
-            //echo $serialize_user;
             echo '<p class="breakline"> Encoding base64 object: <br/>' . $base64_user . '</p>';
         }
         ?>

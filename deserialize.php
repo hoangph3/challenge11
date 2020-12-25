@@ -1,10 +1,3 @@
-<?php include('object.php');
-if (!empty($_POST)) {
-    $str = $_POST['string'];
-    $serialize_user = base64_decode($str);
-    $deserialize_user = unserialize($serialize_user);
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,9 +39,11 @@ if (!empty($_POST)) {
     </div>
     <div class="main">     
         <h2>Information</h2><br/>
-        <?php 
+        <?php include('object.php');
         if (!empty($_POST)) {
-            $deserialize_user->get_info();
+            $str = $_POST['string'];
+            $serialize_user = base64_decode($str);
+            $deserialize_user = unserialize($serialize_user);
         }
         ?>
     </div>
