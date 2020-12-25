@@ -28,6 +28,7 @@ if (!empty($_POST)) {
 
 <ul>
     <li><a href="https://github.com/hoangph3/challenge11">Link to github repository &raquo; </a></li>
+    <li><a href="serialize.php">Serialize</a></li>
     <div class="navbar">
         <a href="javascript:void(0)" class="right">Log out</a>
     </div>
@@ -47,10 +48,7 @@ if (!empty($_POST)) {
         <h2>Information</h2><br/>
         <?php 
         if (!empty($_POST)) {
-            $deserialize_user->getUsername();
-            $deserialize_user->getEmail();
-            $deserialize_user->getYear();
-            $deserialize_user->getSex();
+            $deserialize_user->get_info();
         }
         ?>
     </div>

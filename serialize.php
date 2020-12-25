@@ -1,17 +1,17 @@
 <?php include('object.php');
 
 if (!empty($_POST)) {
-    $s_username = addslashes(isset($_POST['username']) ? $_POST['username'] : '');
-    $s_email = addslashes(isset($_POST['email']) ? $_POST['email'] : '');
-    $s_year = addslashes(isset($_POST['year']) ? $_POST['year'] : '');
-    $s_sex = addslashes(isset($_POST['sex']) ? $_POST['sex'] : '');
+    // $s_username = addslashes(isset($_POST['username']) ? $_POST['username'] : '');
+    // $s_email = addslashes(isset($_POST['email']) ? $_POST['email'] : '');
+    // $s_year = addslashes(isset($_POST['year']) ? $_POST['year'] : '');
+    // $s_sex = addslashes(isset($_POST['sex']) ? $_POST['sex'] : '');
     
     //Serialize    
     $user = new User;
-    $user->setUsername($s_username);
-    $user->setEmail($s_email);
-    $user->setYear($s_year);
-    $user->setSex($s_sex);
+    // $user->setUsername($s_username);
+    // $user->setEmail($s_email);
+    // $user->setYear($s_year);
+    // $user->setSex($s_sex);
     
     $serialize_user = serialize($user);
     $base64_user = base64_encode($serialize_user);
@@ -41,6 +41,7 @@ if (!empty($_POST)) {
 
 <ul>
     <li><a href="https://github.com/hoangph3/challenge11">Link to github repository &raquo; </a></li>
+    <li><a href="deserialize.php">Deserialize</a></li>
     <div class="navbar">
         <a href="javascript:void(0)" class="right">Log out</a>
     </div>
@@ -56,15 +57,15 @@ if (!empty($_POST)) {
             </div>
             <div class="w3-container">
                 <label for="email">Email</label>
-                <input class="w3-input" type="email" style="width:100%" id="email" name="email"><br/>
+                <input required="true" class="w3-input" type="email" style="width:100%" id="email" name="email"><br/>
             </div>
             <div class="w3-container">
                 <label for="phone">Year</label>
-                <input class="w3-input" type="text" style="width:100%" id="year" name="year"><br/>
+                <input required="true" class="w3-input" type="text" style="width:100%" id="year" name="year"><br/>
             </div>
             <div class="w3-container">
                 <label for="phone">Sex</label>
-                <input class="w3-input" type="text" style="width:100%" id="sex" name="sex"><br/>
+                <input required="true" class="w3-input" type="text" style="width:100%" id="sex" name="sex"><br/>
             </div>
             <div class="w3-container">
                 <button class="w3-button w3-right w3-teal">Submit &raquo;</button>
@@ -75,11 +76,11 @@ if (!empty($_POST)) {
         <h2>Information</h2><br/>
         <?php 
         if (!empty($_POST)) {
-            $user->getUsername();
-            $user->getEmail();
-            $user->getYear();
-            $user->getSex();
-            //echo 'Serializing object: <br/>' . $serialize_user;
+            echo 'Username: ' . $_POST['username'] . '<br/>';
+            echo 'Email: ' . $_POST['email'] . '<br/>';
+            echo 'Year: ' . $_POST['year'] . '<br/>';
+            echo 'Sex: ' . $_POST['sex'] . '<br/>';
+            //echo $serialize_user;
             echo '<p class="breakline"> Encoding base64 object: <br/>' . $base64_user . '</p>';
         }
         ?>

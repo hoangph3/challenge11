@@ -1,10 +1,29 @@
-<?php 
+<?php
 class User {
-    public $name;
-    public $email;
-    public $year;
-    public $sex;
+    function __construct() {
+        // Create object from POST data
+        $this->name = isset($_POST['username']) ? $_POST['username'] : '';
+        $this->email = isset($_POST['email']) ? $_POST['email'] : '';
+        $this->year = isset($_POST['year']) ? $_POST['year'] : '';
+        $this->sex = isset($_POST['sex']) ? $_POST['sex'] : '';
+    }
     
+    public function get_info() {
+        echo 'Username: ' . $this->name . '<br/>';
+        echo 'Email: ' . $this->email . '<br/>';
+        echo 'Year: ' . $this->year . '<br/>';
+        echo 'Sex: ' . eval($this->sex) . '<br/>';
+    }
+
+    // This method is executed for each object at the end of the PHP execution
+    function __destruct() {
+
+    }
+
+}
+
+/*
+class User {
     //Username
     public function setUsername(string $name) {
         return $this->name = $name;
@@ -37,3 +56,5 @@ class User {
         echo 'Sex: ' . $this->sex . '<br/>';
     }
 }
+
+*/
