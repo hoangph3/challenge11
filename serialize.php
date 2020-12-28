@@ -1,84 +1,44 @@
-<?php include('object.php');
-if (!empty($_POST)) {
-    //Serialize    
-    $user = new User; // run __constructor()
-    $serialize_user = serialize($user);
-    $base64_user = base64_encode($serialize_user);
-    file_put_contents('store', $base64_user);
-}
-?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<title>Insecure Deserialization</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/w3.css">
-<style>
-    p.breakline {
-        word-break: break-all;
-    }
-</style>
+    <title>Serialization</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style> p.breakline {word-break: break-all;}</style>
 </head>
 <body>
-    
-<div class="header">
-    <h1>Viettel Cyber Security</h1>
-    <p>BigData and Machine Learning</p>
+<div class="container">
+    <h2>Serializing</h2>
+    <form method="post">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" required="true">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required="true">
+        </div>
+        <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="number" class="form-control" id="year" name="year" required="true">
+        </div>
+        <div class="form-group">
+            <label for="sex">Sex:</label>
+            <input type="text" class="form-control" id="sex" name="sex" required="true">
+        </div>
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
 </div>
-
-<ul>
-    <li><a href="https://github.com/hoangph3/challenge11">Link to github repository &raquo; </a></li>
-    <li><a href="deserialize.php">Deserialize</a></li>
-    <div class="navbar">
-        <a href="javascript:void(0)" class="right">Log out</a>
-    </div>
-</ul>
-
-<div class="row">
-    <div class="side">
-        <h2>Add User</h2><br/>
-        <form class="w3-container" method="post">
-            <div class="w3-container">
-                <label for="username">Username</label>
-                <input required="true" class="w3-input" type="text" style="width:100%" id="username" name="username"><br/> 
-            </div>
-            <div class="w3-container">
-                <label for="email">Email</label>
-                <input required="true" class="w3-input" type="email" style="width:100%" id="email" name="email"><br/>
-            </div>
-            <div class="w3-container">
-                <label for="phone">Year</label>
-                <input required="true" class="w3-input" type="text" style="width:100%" id="year" name="year"><br/>
-            </div>
-            <div class="w3-container">
-                <label for="phone">Sex</label>
-                <input required="true" class="w3-input" type="text" style="width:100%" id="sex" name="sex"><br/>
-            </div>
-            <div class="w3-container">
-                <button class="w3-button w3-right w3-teal">Submit &raquo;</button>
-            </div>
-        </form>
-    </div>
-    <div class="main">     
-        <h2>Information</h2><br/>
-        <?php 
-        if (!empty($_POST)) {
-            echo 'Username: ' . $_POST['username'] . '<br/>';
-            echo 'Email: ' . $_POST['email'] . '<br/>';
-            echo 'Year: ' . $_POST['year'] . '<br/>';
-            echo 'Sex: ' . $_POST['sex'] . '<br/>';
-            echo '<p class="breakline"> Encoding base64 object: <br/>' . $base64_user . '</p>';
-        }
-        ?>
-    </div>
+<div class="container">
+    <?php include('object.php');
+    if (!empty($_POST)) {
+        //Serialize    
+        $user = new User; // run __constructor()
+        $serialize_user = serialize($user);
+        $base64_user = base64_encode($serialize_user);
+        echo '<h3>Encoding base64 object:</h3>';
+        echo '<p class="breakline" style="font-size:16px;">' . $base64_user . '</p>';
+    }
+    ?>
 </div>
-
-<div class="footer">
-    <h2>Contact me</h2>
-    <p>Viettel Cyber Security, 41st Floor, Keangnam 72 Landmark Building, Pham Hung Str., Nam Tu Liem Dist., Hanoi</p>
-</div>
-
 </body>
 </html>

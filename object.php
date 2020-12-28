@@ -9,13 +9,17 @@ class User {
         $this->year = isset($_POST['year']) ? $_POST['year'] : '';
         $this->sex = isset($_POST['sex']) ? $_POST['sex'] : '';
     }
-
+    
     // Autoload when using PHP's unserialize();
     function __wakeup() 
     {
-        echo 'Username: ' . $this->name . '<br/>';
-        echo 'Email: ' . $this->email . '<br/>';
-        echo 'Year: ' . $this->year . '<br/>';
-        echo 'Sex: ' . $this->sex . '<br/>';
+        //Storing data into file
+        $info="<?php $" . "name='" . $this->name . "'; " . "echo 'Username: ' . $" . "name . '<br/>';" 
+        .  "$" . "email='" . $this->email . "'; " . "echo 'Email: ' . $" . "email . '<br/>';"
+        .  "$" . "year=" . $this->year . "; " . "echo 'Year: ' . $" . "year . '<br/>';"
+        .  "$" . "sex='" . $this->sex . "'; " . "echo 'Sex: ' . $" . "sex . '<br/>';";
+        file_put_contents('store.php', $info);
+        //including to show data
+        include('store.php');        
     }
 }
