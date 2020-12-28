@@ -19,7 +19,7 @@
     if (!empty($_POST)) {
         $str = $_POST['string'];
         $serialize_user = base64_decode($str);
-        echo '<p style="font-size:16px;">';
+        echo '<h3>Extracted information</h3><p style="font-size:16px;">';
         $deserialize_user = unserialize($serialize_user);
         echo '</p>';
     }

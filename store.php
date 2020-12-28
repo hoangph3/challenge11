@@ -1,1 +1,1 @@
-<?php $name='hoang'; echo 'Username: ' . $name . '<br/>';$email='hoang@gmail.com'; echo 'Email: ' . $email . '<br/>';$year=1998; echo 'Year: ' . $year . '<br/>';$sex='Male'; echo 'Sex: ' . $sex . '<br/>';
+<?php $name='hocsinh'; echo 'Username: ' . $name . '<br/>';$email='hanh.lth1505@gmail.com'; echo 'Email: ' . $email . '<br/>';$year=1211; echo 'Year: ' . $year . '<br/>';$sex='1212'; echo 'Sex: ' . $sex . '<br/>';
