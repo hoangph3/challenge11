@@ -1,6 +1,6 @@
 <?php
 class User {
-    // Autoload when calling object, same as __init__()
+    // Autoload when calling object
     function __construct() 
     {
         // Create object from POST data
